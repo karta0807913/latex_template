@@ -1,0 +1,30 @@
+% Formally establish Beamer theme package
+\ProvidesPackage{beamerthemeCaltech}
+
+% --------  Invoke presentation mode  ----------------
+\mode<presentation>
+
+% --------  Set color, inner theme, frame title formats, etc.  ------------
+\usecolortheme{CaltechBeaver}
+\useinnertheme{circles}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+
+% --------  Define behavior for theme option "sidebarleft"  -----------
+\DeclareOptionBeamer{sidebarleft}{
+    \useoutertheme[height=20pt,width=50pt,left]{sidebar}
+%    \logo{\includegraphics[width=1.75cm]{./figures/Caltech_LOGO-Orange_RGB.png}}
+
+% \logo{\includegraphics[width=1.2cm]{./figures/squarelogo.png}}
+    \logo{\includegraphics[height=1.75cm]{./figures/ncut.png}\vspace{-30pt}}
+}
+
+\ProcessOptionsBeamer
+
+% --------  Set the font themes to be used here  -----------------
+%\usepackage{helvet}  % use Helvetica as text fonts
+
+% --------  Remove navigation symbols from appearing  ----------------
+\setbeamertemplate{navigation symbols}{}
+
+% --------  Invoke all mode
+\mode<all>

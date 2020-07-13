@@ -1,0 +1,105 @@
+%!TEX program = xelatex
+\documentclass[journal]{article} %普通的
+% \documentclass[journal]{IEEEtran} % ieee 格式
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath}
+\usepackage{tabularx}
+
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}[
+  Path = ./fonts/english/,
+  Extension = .ttf ,
+  BoldFont = *-Bold ,
+  ItalicFont = *-Italic ,
+  BoldItalicFont = *-BoldItalic, ]
+\setCJKmainfont{BiauKai}[
+  Path = ./fonts/chinese/ ,
+  Extension = .ttf ,
+  BoldFont = Kaiti-Black, ]
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{caption}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\usepackage{graphicx}
+
+\begin{document}
+
+% caption figure 的prefix
+% \begin{figure}
+%     \includegraphics[width=\linewidth]{flow.png}
+%     \caption{交易流程}
+%     \label{flow_image} % 圖 x
+% \end{figure}
+\captionsetup[figure]{name=圖}
+
+%bibname
+\renewcommand{\refname}{參考文獻}
+
+\title{標題}
+\author{作者}
+\date{\today}
+\maketitle
+
+% 目錄
+\renewcommand\contentsname{目錄}
+\tableofcontents
+
+% 圖目錄
+% \renewcommand\listfigurename{圖目錄}
+% \listoffigures
+
+% 表目錄
+% \renewcommand\listtablename{表目錄}
+% \listoftables
+
+\newpage
+
+%table
+% \begin{table}[h!]
+% \centering
+% \begin{tabularx}{\linewidth}{l X} 
+%  \hline
+%  \textbf{Notation} & \textbf{Description}\\
+%  \hline
+%  A & a \\
+%  B & b \\
+%  \hline
+% \end{tabularx}
+% \caption{Table to test captions and labels}
+% \label{table:1}
+% \end{table}
+
+% 演算法block中的Procedure, Function 區塊
+% \algdef{SE}[PROCEDURE]{Procedure}{EndProcedure}%
+% [2]{\algorithmicprocedure\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
+% {\algorithmicend\ \algorithmicprocedure}%
+% \algdef{SE}[FUNCTION]{Function}{EndFunction}%
+% [2]{\algorithmicfunction\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
+% {\algorithmicend\ \algorithmicfunction}%
+
+% 演算法block
+% \begin{algorithm}[htb]
+%     \begin{algorithmic}[1]
+%     \end{algorithmic}
+% \end{algorithm}
+
+% START HERE
+
+% 參考文獻
+% \newpage
+% \addcontentsline{toc}{section}{\refname} %參考文件加入目錄
+% \begin{thebibliography}{9}
+% \bibitem{test}
+%   description
+% \end{thebibliography}
+
+\end{document}
