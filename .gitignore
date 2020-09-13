@@ -10,6 +10,10 @@
 *.zip
 *.nav
 *.snm
+*.bbl
+*.bcf
+*.blg
 *.swp
 *.lof
 *.lot
+*.run.xml

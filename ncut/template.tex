@@ -15,6 +15,8 @@
 \usepackage{algpseudocode}
 \usepackage{epsfig}
 
+\usepackage{biblatex} % bibertex
+\addbibresource{template.bib}
 %%--------------------------------------------------------------------%%
 
 \begin{document}
@@ -138,7 +140,7 @@ blablabla
 \newpage
 
 \section{第二章章節標題太長可以排列成兩行之範例}
-blablabla
+blablabla\cite{8643999}
 \subsection{第一層子標題}
 blablabla
 \subsubsection{第二層子標題}
@@ -147,27 +149,5 @@ blablabla
 \newpage
 
 \newpage
-%% \addcontentsline{toc}{section}{\refname}
-%% \renewcommand{\bibname}{參考文獻}
-\begin{thebibliography}{9}
-\bibitem{test}
-  Doak, E. M. (2002). Decisions, Decisions, Decisions: A Tale of Special Collections in the Small Academic Library. Acquisitions Librarian, 14(27), 41. 
-\bibitem{testa}
-Horava, T. (2017). Dollars and Decision-Making: What is a "Collection" Nowadays? Technicalities, 37(6), 14-17. 
-\bibitem{testb}
-Lukes, R., Markgren, S., \& Thorpe, A. (2016). E-Book Collection Development: Formalizing a Policy for Smaller Libraries. Serials Librarian, 70(1-4), 106-115.
-\bibitem{testc}
-Rogers, J. P., \& Wesley, K. (2015). Reaching New Horizons: Gathering the Resources Librarians Need to Make Hard Decisions. Serials Librarian, 68(1-4), 64-77. doi:10.1080/0361526X.2015.1016831
-\bibitem{testd}
-方文昌、張重昭、林建煌、汪志堅（2006）。台灣行銷與消費者行為研究論文在國際頂尖期刊的發表現況。行銷評論，3（2），137-148。doi:10.29931/mr.200606.0001
-\bibitem{teste}
-吳杰倫（2019）。服務品質、顧客滿意度與忠誠度之關係─以R珠寶公司為例。國立臺北科技大學管理學院EMBA泰國專班，臺北市。
-\bibitem{testf}
-杜健、賈俊秀（2016）。社交媒體對消費者行為影響下的企業最佳產能策略。「中國系統工程學會第19屆學術年會」發表之論文，北京。
-\bibitem{testg}
-黃明居、吳東陽（2014）。圖書館電子資源之加值應用以引用文獻分析系統之建置為例，圖書館學與資訊科學，40，66-81。
-\bibitem{testh}
-蕭富峰（2009）。消費者行為（初版）。臺北市：智勝文化。
-\end{thebibliography}
-
+\printbibliography
 \end{document}
