@@ -31,6 +31,9 @@
 
 \usepackage{graphicx}
 
+\usepackage{biblatex} % bibertex
+\addbibresource{chinese.bib}
+
 \begin{document}
 
 % caption figure 的prefix
@@ -40,9 +43,6 @@
 %     \label{flow_image} % 圖 x
 % \end{figure}
 \captionsetup[figure]{name=圖}
-
-%bibname
-\renewcommand{\refname}{參考文獻}
 
 \title{標題}
 \author{作者}
@@ -94,6 +94,8 @@
 
 % START HERE
 
+測試用例 \cite{8643999}
+
 % 參考文獻
 % \newpage
 % \addcontentsline{toc}{section}{\refname} %參考文件加入目錄
@@ -101,5 +103,8 @@
 % \bibitem{test}
 %   description
 % \end{thebibliography}
+
+\newpage
+\printbibliography[title={\centering 參考文獻}]
 
 \end{document}
