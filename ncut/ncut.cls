@@ -13,30 +13,30 @@
 \RequirePackage{indentfirst}
 \RequirePackage{caption}
 \RequirePackage{titlesec}
+\RequirePackage{zhnumber}
 
 \RequirePackage{geometry}
 \geometry{
-  top=2cm,
+  top=2.8cm,
   bottom=3cm,
   left=2.5cm,               % inner=3cm
   right=2.5cm               % outer=3cm
 }
 
 % set section prefix
-\newcommand \originthesection {\@arabic\c@section}
-\renewcommand\thesection      {}
-\renewcommand\thesubsection   {\originthesection.\@arabic\c@subsection}
+\renewcommand\thesection      {\zhnum{section}}
+\renewcommand\thesubsection   {\arabic{section}.\@arabic\c@subsection}
 
 % set section style and space
-\titleformat{\section}[display]
-  {\LARGE\bfseries\centering}{\thesection}{0ex}{}
-\titlespacing*{\section}
-  {0ex}{-7ex}{8ex}
-%% \renewcommand\section{\@startsection {section}{1}{\z@}%
-%%                                    {-8ex \@plus -.2ex}%
-%%                                    {8ex \@plus.2ex}%
-%%                                    {\LARGE\bfseries\fontsize{20pt}{20pt}\centering}
+\titleformat{\section}
+  {\LARGE\bfseries\centering}{\thesection}{0ex}{}[]
+\titleformat{name=\section,numberless}[display]
+  {\LARGE\bfseries\centering}{}{0ex}{}[]
+\let\oldsection\section
+\renewcommand{\section}[1]{{\LARGE\bfseries\centering{}\ \\}\oldsection{#1}}
 
+\titlespacing*{\section}
+  {0ex}{0ex}{6ex}
 
 % menu settings
 \renewcommand\tableofcontents{%
