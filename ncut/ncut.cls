@@ -4,24 +4,27 @@
 \DeclareOption{green}{\renewcommand{\headlinecolor}{\color{green}}}
 \ProcessOptions\relax
 
-\def\@thesection    {第\zhnum{section}章}
-\def\@contentsname  {目錄}
-\def\@listfigurename{圖目錄}
-\def\@listtablename {表目錄}
-\def\@figurename    {圖}
-\def\@tablename     {表}
+\def\@thesection      {第\zhnum{section}章}
+\def\@contentsname    {目錄}
+\def\bibliographytitle{參考文獻}
+\def\@listfigurename  {圖目錄}
+\def\@listtablename   {表目錄}
+\def\@figurename      {圖}
+\def\@tablename       {表}
 
 \DeclareOption{english}{%
-  \def\@thesection    {Chapter \arabic{section}}%
-  \def\@contentsname  {Table of Contents}%
-  \def\@listfigurename{List of Figures}%
-  \def\@listtablename {List of Tables}%
-  \def\@figurename    {Figure}%
-  \def\@tablename     {Table}%
+  \def\@thesection      {Chapter \arabic{section}}%
+  \def\@contentsname    {Table of Contents}%
+  \def\bibliographytitle{References}
+  \def\@listfigurename  {List of Figures}%
+  \def\@listtablename   {List of Tables}%
+  \def\@figurename      {Figure}%
+  \def\@tablename       {Table}%
 }
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
-\LoadClass[a4paper,12pt]{article}
+\LoadClass[a4paper]{article}
 
 
 \RequirePackage{hyperref}
