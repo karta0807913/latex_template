@@ -1,7 +1,28 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ncut}[2020/05/30 v1.0 NCUT Theis Template]
 
-\LoadClass[a4paper, 12pt]{report}
+\DeclareOption{green}{\renewcommand{\headlinecolor}{\color{green}}}
+\ProcessOptions\relax
+
+\def\@thesection    {第\zhnum{section}章}
+\def\@contentsname  {目錄}
+\def\@listfigurename{圖目錄}
+\def\@listtablename {表目錄}
+\def\@figurename    {圖}
+\def\@tablename     {表}
+
+\DeclareOption{english}{%
+  \def\@thesection    {Chapter \arabic{section}}%
+  \def\@contentsname  {Table of Contents}%
+  \def\@listfigurename{List of Figures}%
+  \def\@listtablename {List of Tables}%
+  \def\@figurename    {Figure}%
+  \def\@tablename     {Table}%
+}
+\ProcessOptions\relax
+
+\LoadClass[a4paper,12pt]{article}
+
 
 \RequirePackage{hyperref}
 \RequirePackage[utf8]{inputenc}
@@ -11,9 +32,21 @@
 \RequirePackage{graphics}
 \RequirePackage{background}
 \RequirePackage{indentfirst}
-\RequirePackage{caption}
 \RequirePackage{titlesec}
 \RequirePackage{zhnumber}
+\RequirePackage{caption}
+
+% set section prefix
+\renewcommand{\thesection}    {\@thesection}
+\renewcommand\thesubsection   {\arabic{section}.\arabic{subsection}}
+\renewcommand\thesubsubsection{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+% set title
+\renewcommand\contentsname{\@contentsname}
+\renewcommand\listfigurename{\@listfigurename}
+\renewcommand\listtablename{\@listtablename}
+\renewcommand\figurename{\@figurename}
+\renewcommand\tablename{\@tablename}
 
 \RequirePackage{geometry}
 \geometry{
@@ -23,17 +56,12 @@
   right=2.5cm               % outer=3cm
 }
 
-% set section prefix
-\renewcommand\thesection      {\zhnum{section}}
-\renewcommand\thesubsection   {\arabic{section}.\@arabic\c@subsection}
 
 % set section style and space
 \titleformat{\section}
-  {\LARGE\bfseries\centering}{\thesection}{0ex}{}[]
+  {\LARGE\bfseries\centering}{\thesection}{1ex}{}[]
 \titleformat{name=\section,numberless}[display]
-  {\LARGE\bfseries\centering}{}{0ex}{}[]
-\let\oldsection\section
-\renewcommand{\section}[1]{{\LARGE\bfseries\centering{}\ \\}\oldsection{#1}}
+  {\LARGE\bfseries\centering}{}{1ex}{}[]
 
 \titlespacing*{\section}
   {0ex}{0ex}{6ex}
@@ -92,10 +120,15 @@
 }
 
 %目錄設定
+%% \titlecontents{section}
+%% [0em]
+%% {}
+%% {\contentslabel{1em}}
+%% {}{\titlerule*{.} \contentspage}
 \titlecontents{section}
 [0em]
+{\thecontentslabel}
 {}
-{} % section do not have label
 {}{\titlerule*{.} \contentspage}
 
 \titlecontents{subsection}
@@ -110,11 +143,18 @@
 {\contentslabel{3em}}
 {}{\titlerule*{.} \contentspage}
 
-\renewcommand\contentsname{目錄}
-\renewcommand\listfigurename{圖目錄}
-\renewcommand\listtablename{表目錄}
-\captionsetup[figure]{name=圖}
+\titlecontents{figure}
+[0em]
+{}
+{\figurename \hspace{1em} \contentslabel{1em}}
+{}{\titlerule*{.} \contentspage}
+
+\titlecontents{table}
+[0em]
+{}
+{\tablename \hspace{1em} \contentslabel{1em}}
+{}{\titlerule*{.} \contentspage}
 
 \endinput
 %%
-%% End of file `article.cls'.
+%% End of file `ncut.cls'.

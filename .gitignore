@@ -16,3 +16,6 @@
 *.lof
 *.lot
 *.run.xml
+*.fls
+*.xdv
+*.fdb_latexmk

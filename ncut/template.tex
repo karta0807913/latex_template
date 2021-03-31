@@ -4,7 +4,7 @@
 
 % \documentclass[journal]{article} %普通的
 % \documentclass[journal]{IEEEtran} % ieee 格式
-\documentclass[12pt]{ncut}
+\documentclass[english,12pt]{ncut}
 
 %%-------------------------packages-----------------------------------%%
 \usepackage{graphics}% Include figure files
@@ -21,104 +21,13 @@
 %%--------------------------------------------------------------------%%
 
 \begin{document}
-\renewcommand{\thesection}{}
-\pagenumbering{roman}
-\begin{titlepage}
-  \renewcommand{\baselinestretch}{1.2}
-    \begin{center}
-        \Huge
-        \textbf{國立勤益科技大學\\
-        \vspace{1mm}
-        冷凍空調與能源系碩士班\\
-        \vspace{1mm}
-        碩士學位論文}
 
-        \vspace{2cm}
-        \Huge
-        \bfseries
-        便利商店環境下使用行動支付之\\
-        消費者行為研究\\
-        -以連鎖便利商店A超商為例\\
-        {\LARGE Optional English Title English Title Example
-        Optional English Title}
+\input{titlepage.tex}
 
-        \vspace{1.5cm}
+\include{sections/緒論}
 
-        \LARGE
-        研究生：王小明
-        \vspace{1.5cm}
+\include{sections/章節標題太長可以排列成兩行之範例}
 
-        指導教授：李大仁 博士
-
-        \vfill
-
-        中華民國一百零九年一月
-
-    \end{center}
-    \newpage
-\end{titlepage}
-
-\begin{center} %正文
-    \Large
-    \textbf{便利商店環境下使用行動支付之消費者行為研究\\
-    -以連鎖便利商店A超商為例}
-\end{center}
-
-\section{摘要}
-\begin{center}
-    (略)
-\end{center}
-\noindent 關鍵字詞：
-
-\newpage
-
-\section{ABSTRACT}
-
-\textbf{Start writing abstract from here. Start writing abstract from here. Start writing abstract from here. Start writing abstract from here. Start writing abstract from here. Start writing abstract from here. Start writing abstract from here. Start writing abstract from here.\\
-Keywords:}
-
-\newpage
-
-\section{誌謝}
-
-\indent
-所有對於研究提供協助之人或機構，作者都可在誌謝中表達感謝之意。標題使用 20pt粗標楷體，並於上、下方各空一行(1.5倍行高字型12pt空行)後鍵入內容。致謝頁須編頁碼(小寫羅馬數字表示頁碼)。
-
-\newpage
-
-\tableofcontents
-\newpage
-
-\listoftables
-\newpage
-
-\listoffigures
-\newpage
-
-\pagenumbering{arabic}
-
-\setcounter{section}{0} %重新編號
-\renewcommand{\thesection}{第\zhnum{section}章\ }
-\section{緒論}
-blablabla
-
-\subsection{第一層子標題}
-blablabla
-
-\subsubsection{第二層子標題}
-blablabla
-
-\newpage
-
-\section{章節標題太長可以排列成兩行之範例}
-blablabla\cite{8643999}
-\subsection{第一層子標題}
-blablabla
-\subsubsection{第二層子標題}
-blablabla
-
-\newpage
-
-\newpage
+\clearpage
 \printbibliography[title={\centering 參考文獻}]
 \end{document}
