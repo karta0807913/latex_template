@@ -123,15 +123,10 @@
 }
 
 %目錄設定
-%% \titlecontents{section}
-%% [0em]
-%% {}
-%% {\contentslabel{1em}}
-%% {}{\titlerule*{.} \contentspage}
 \titlecontents{section}
 [0em]
 {\thecontentslabel}
-{}
+{\hspace{5bp}}
 {}{\titlerule*{.} \contentspage}
 
 \titlecontents{subsection}
@@ -149,13 +144,13 @@
 \titlecontents{figure}
 [0em]
 {}
-{\figurename \hspace{1em} \contentslabel{1em}}
+{\figurename \hspace{1em} \contentslabel{1em} \hspace{5bp}}
 {}{\titlerule*{.} \contentspage}
 
 \titlecontents{table}
 [0em]
 {}
-{\tablename \hspace{1em} \contentslabel{1em}}
+{\tablename \hspace{1em} \contentslabel{1em} \hspace{5bp}}
 {}{\titlerule*{.} \contentspage}
 
 \endinput
