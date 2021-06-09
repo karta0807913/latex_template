@@ -11,20 +11,67 @@
 
 % --------  Define behavior for theme option "sidebarleft"  -----------
 \DeclareOptionBeamer{sidebarleft}{
-    \useoutertheme[height=20pt,width=50pt,left]{sidebar}
-%    \logo{\includegraphics[width=1.75cm]{./figures/Caltech_LOGO-Orange_RGB.png}}
-
-% \logo{\includegraphics[width=1.2cm]{./figures/squarelogo.png}}
-    \logo{\includegraphics[height=1.75cm]{./figures/ncut.png}\vspace{-30pt}}
+	\useoutertheme[height=20pt,width=50pt,left]{sidebar}
+	\logo{\includegraphics[height=1.75cm]{./figures/ncut.png}\vspace{-30pt}}
 }
+
+\setbeamertemplate{footline} {
+	\begin{beamercolorbox}[ht=4ex]{footline}
+		\centering
+		\hfill{}
+		\usebeamertemplate*{page number in head/foot}
+
+		\vspace{2ex}
+	\end{beamercolorbox}
+}
+
+\setbeamertemplate{page number in head/foot} {
+	\begin{beamercolorbox}[wd=.08\paperwidth]{page number in head/foot}
+		\centering
+		\footnotesize{}
+		\insertframenumber/\inserttotalframenumber
+	\end{beamercolorbox}
+}
+
+\newcommand{\showpagenumber}{
+\setbeamertemplate{page number in head/foot} {
+	\begin{beamercolorbox}[wd=.08\paperwidth]{page number in head/foot}
+		\centering
+		\footnotesize{}
+		\insertframenumber/\inserttotalframenumber
+	\end{beamercolorbox}
+}}
+
+\setbeamertemplate{subsection in toc}[square]
 
 \ProcessOptionsBeamer
 
 % --------  Set the font themes to be used here  -----------------
-%\usepackage{helvet}  % use Helvetica as text fonts
+%% \usepackage{helvet}  % use Helvetica as text fonts
 
 % --------  Remove navigation symbols from appearing  ----------------
 \setbeamertemplate{navigation symbols}{}
+
+% --------  Add Section and Subsection Title Page  ----------------
+\AtBeginSection[]
+{
+  \setbeamertemplate{page number in head/foot} {}
+	\begin{frame}[noframenumbering]
+		\frametitle{Outline}
+		\tableofcontents[currentsection]
+	\end{frame}
+  \showpagenumber
+}
+
+\AtBeginSubsection[]
+{
+  \setbeamertemplate{page number in head/foot} {}
+	\begin{frame}[noframenumbering]
+		\centering{}
+		{\color{blue!40}\LARGE\textbullet}{\LARGE\subsecname{}}{\color{blue!40}\LARGE\textbullet}
+	\end{frame}
+  \showpagenumber
+}
 
 % --------  Invoke all mode
 \mode<all>
