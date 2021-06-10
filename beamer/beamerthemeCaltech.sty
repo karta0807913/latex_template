@@ -58,7 +58,11 @@
   \setbeamertemplate{page number in head/foot} {}
 	\begin{frame}[noframenumbering]
 		\frametitle{Outline}
-		\tableofcontents[currentsection]
+    \tableofcontents[
+      currentsection,
+      sectionstyle=show/shaded,
+      subsectionstyle=show/show/hide
+    ]
 	\end{frame}
   \showpagenumber
 }
