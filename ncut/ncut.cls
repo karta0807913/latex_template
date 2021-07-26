@@ -27,7 +27,7 @@
 \LoadClass[a4paper]{article}
 
 
-\RequirePackage{hyperref}
+\RequirePackage[hidelinks]{hyperref}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[UTF8]{ctex}
 \RequirePackage{xeCJK}
