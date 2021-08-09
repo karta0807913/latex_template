@@ -1,25 +1,29 @@
 %!TEX program = xelatex
-% https://minsky.pixnet.net/blog/post/26804386
-% https://blog.csdn.net/l_changyun/article/details/86716758
 
 \documentclass[english,12pt]{ncut}
 
 %%-------------------------packages-----------------------------------%%
 \usepackage{graphics}% Include figure files
-\usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{amsmath}
+\usepackage{tikz} % tikz draw image
+\usepackage{xcolor} %you can define color use xcolor
 
 \usepackage[maxbibnames=99,style=ieee]{biblatex} % bibertex
 \addbibresource{template.bib}
+
 %%--------------------------------------------------------------------%%
 
 \begin{document}
+
+\input{newcommands.tex}
 
 \input{titlepage.tex}
 
 \include{sections/緒論}
 
-\include{sections/章節標題太長可以排列成兩行之範例}
+\include{sections/中文解說}
+
+\include{sections/English_Explanation}
 
 \clearpage
 \printbibliography[heading=bibintoc, title={\centering \bibliographytitle}]

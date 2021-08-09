@@ -1,0 +1,25 @@
+\newcommand{\SID}[1]{SID_{#1}}
+\newcommand{\PID}[1]{PID_{#1}}
+\newcommand{\RandomSpace}[1][q]{K^{*}_{#1}}
+\newcommand{\randomVar}[2][q]{#2 \in \RandomSpace{#1}}
+\newcommand{\Pubkey}[1]{PK_{#1}}
+\newcommand{\Prikey}[1]{SK_{#1}}
+\newcommand{\SessionKey}[1]{S_{#1}}
+
+\newcommand{\ChineseNotation}{
+	\begin{table}
+    \centering
+		\caption{符號表1}
+		\label{table:notation-chinese}
+		\begin{tabular}{l l}
+			\hline
+			\hline
+			$\SID{i}$         & 使用者$i$的私有ID，不公開                      \\
+			%% $\PID{i}$         & 使用者$i$的公開ID，公開                        \\
+			$\Pubkey{i}$      & 使用者$i$的公開金鑰                            \\
+			$\Prikey{i}$      & 使用者$i$的私有金鑰                            \\
+			$\SessionKey{ij}$ & 使用者 $i$ 與使用者 $j$ 共同做出的 session key \\
+			\hline
+			\hline
+		\end{tabular}
+	\end{table}}

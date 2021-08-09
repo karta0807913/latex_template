@@ -1,0 +1,279 @@
+\section{中文版本}\label{sec:Chinese}
+
+If you are the English user, please go to the \ref{sec:English}
+
+\subsection{如何安裝 Latex}
+
+首先，Latex 有著許多的發行版，因為我使用的是 texlive，在這裡我將使用 texlive 作為範例。
+windows 須注意的是安裝時必須勾選安裝至 PATH。
+
+\begin{itemize}
+	\item [方法1：] 如果你不介意版本可能過舊，比較快速的方法是上我們的實驗室ftp (http://ftp539-csie.ncut.edu.tw/iso/texlive2020-20200406.iso) 下載完整的 iso 檔案（使用校內網路下載較為快速）。解壓縮之後依照作業系統點選 install-tl-windows.bat 或是 install-tl 就行。
+	\item [方法2：] 到 texlive 的官方網站 (https://www.tug.org/texlive/acquire-netinstall.html) 下載 windows 或是 linux 的安裝程式，按照步驟安裝即可。
+	\item [方法3：] 使用系統內建的套件管理程式安裝，以 ubuntu 為例，使用 apt 安裝。
+	      \[\text{\$ apt install texlive-full}\]
+	\item [方法4：] 直接使用 overleaf 不過速度非常的慢，不建議
+\end{itemize}
+
+
+\subsubsection{附錄：各個編輯器的插件設定}
+
+\begin{itemize}
+	\item VSCode: 安裝 Latex Workshop
+	\item Emacs: lsp-mode, lsp-latex and texlab。或者你可以試試看我的設定 \\(https://github.com/karta0807913/emacs.d)
+\end{itemize}
+
+\subsection{Latex 基本使用規則}
+
+在這一章節中將介紹 Latex 的基本使用方法。
+在 latex 中，一個關鍵字將由反斜線 ($\backslash$)與英文字母所構成，比如說 $\backslash$backslash 將會顯示出一個反斜線。
+並且這些關鍵字就像函數一樣可以給予參數，就比如 $\backslash$hspace\{2cm\}使得使用者可以空出 2cm 的寬度。
+此外還有更多給予參數的方式，比如說使用中括弧([])給予可選的參數 $\backslash$includegraphics [width=2cm, height=3cm]\{figure/picture.png\}。
+在接下來的子章節中會介紹一些基本的關鍵字與environment。
+
+\subsubsection{$\backslash$documentclass}
+
+就以本 tmeplate 的使用說明為例，當打開 template.tex 時，最上面的 $\backslash{}$documentclass 代表著這個 tex file 使用何種格式。
+這些格式也有許多參數可以選擇，以目前的 template 為例，使用了 ncut 模板並有著 english 與 12pt 兩個參數，english 代表使用英文模板，如果沒有這個關鍵字所有的章節標題將由中文顯示、12pt 代表內文的字體大小。
+另外也可以使用其他的模板，例如最常見的 IEEEtran，這個模板將可以標準的直接輸出 ieee 所需要的格式。
+
+\subsubsection{$\backslash$usepackage}
+
+這個關鍵字可以讓使用者匯入其他人所寫的套件，就例如 python 中的 import 或是 nodejs 中的 require。
+在本模板中使用了 graphics 套件，這個套件提供了 includegraphics 關鍵字讓使用者可以匯入圖片檔。
+另外使用了 bibertex 套件，它可以自動的排序與生成參考文獻，只要將 ieee 或是 google scholar 產生的bibtex 文字複製到相對應的檔案中就可以使用，比如說這樣\cite{9394011}，在寫文章時十分有用。
+
+\subsubsection{$\backslash$begin 與 $\backslash$end}
+
+這是一個對應的關鍵字，有 begin 就必須有對應的 end，定義了一個 environment （中文叫「環境」嗎？），中間的文字將會變為不一樣的設定。
+就比如說$\backslash$begin\{center\} $\backslash$end\{center\}可以將文字置中，
+\begin{center}
+	就像這一行一樣。
+\end{center}
+
+另外，所有的文字都必須寫在 document 這一個 environment 中，latex 才能正確的編譯。
+所有的 usepackage 必須放在 document environment 外。
+
+\subsubsection{$\backslash$label 與 $\backslash$ref} \label{subsubsec:ref}
+
+在過程中可以使用 $\backslash$label 命令將章節、圖表、表格或是等式給標記，並且使用 $\backslash$ref 命令使 latex 自動插入標號，比如說：章節\ref{subsubsec:ref}、(\ref{eq:E})、Fig. \ref{fig:watermark}。
+必須注意的是 label 必須放在標號之後，如果沒有標號是不會成功的。
+如果只有 ref 而沒有 label 的話將會用 $??$ 所表示，在編譯時會跳出錯誤，須細心檢查。
+
+\subsubsection{$\backslash$newcommand}
+
+提供使用者新增自己的新指令，這個解釋起來比較複雜，但是可以極大的減少工作量。
+這篇模板裡面大量的用了這種指令，可以自行檢視原始碼。
+
+\begin{align}
+	E = mc^{2} \label{eq:E}
+\end{align}
+
+\begin{figure}
+	%% .3\textwidth 指的是寬度的三成
+	\centering
+	\includegraphics[width=.3\textwidth]{ncut_watermark.jpg}
+	\caption{caption}
+	\label{fig:watermark}
+\end{figure}
+
+\subsubsection{$\backslash$include}
+
+這個指令指的是直接將另一個檔案的內容原原本本複製到這個指令的位置並在前面加上$\backslash$clearpage 關鍵字。
+所以在這些子檔案中並不需要加入 document environment，也不需要重新引入 packages。
+
+\subsubsection{$\backslash$input}
+與$\backslash$include 類似，input 只是不插入 $\backslash$clearpage。
+
+\subsubsection{$\backslash$printbibliography}
+
+這個指令代表著在哪個地方印出 reference。
+
+\subsubsection{$\backslash$section $\backslash$subsection $\backslash$subsubsection}
+
+宣告章節的開始，分別為章節/小節/小小節。
+
+\subsubsection{符號列表}
+
+可以從這個網站找到符號參考 => https://www.caam.rice.edu/~heinken/latex/symbols.pdf
+
+\subsection{論文基本架構}
+
+這裡推薦一個基本的論文結構：
+\begin{enumerate}
+	\item Abstract
+	\item Introduction
+	\item Related Work
+	\item System Component
+	\item Proposed Scheme
+	\item Functional Analysis
+	\item Performance Analysis and Evaluation
+	\item Conclusion
+\end{enumerate}
+
+\subsubsection{Abstract}
+
+在這小節裡面寫出你的論文好在哪裡，比起傳統的方法好了什麼方面，只需要介紹自己的論文的特性就行。
+在寫 abstract 時不需要寫的太詳細，比如說：「我們的論文在A方法上面使用了b與c兩種優化方法並與B方法比較起來提昇了XX\%的速度」，只須寫的比較隴統：「本論文優化了A方法並與其他論文比較提昇XX\%的速度」。
+有些期刊論文不允許在 abstract 中使用 cite，所以使用較精簡的方法就可以，詳細的展開可以等到 Conclusion。
+
+\subsubsection{Introduction}
+
+介紹為何要寫這篇論文，寫出動機。
+就像寫個故事一樣，個人覺得這是最難的一章節。
+
+\subsubsection{Related Work}
+
+列出與你相關的其他論文並用一句話解釋這篇論文在做什麼。
+例如：「Chen 等人\cite{9394011}提出了一個智能合約系統，嘗試使用智能合約這個分散式系統來取代公正第三方單位。另外在\cite{7589035}論文中提出了一種用 P2SH 的共用錢包來維持交易的公正性」
+需要注意 cite 的時候只需要列出第一作者的姓就可以了，例如：「Chen等人\cite{9394011}」。
+
+\subsubsection{System Component}
+
+Optional，介紹你的系統使用過的所有元件，例如CNN、Blockchain 等等。
+
+\subsubsection{Proposed Scheme}
+
+流水帳的寫出你提出來的系統，最簡單的一章。
+
+\subsubsection{Functional Analysis}
+
+寫出你的證明。
+證明可以大概分為兩種，一種是「攻擊者不可能解開答案」另一種是「攻擊者不能猜出處理過後的值原本是什麼」，老師所說的「雪碧、可樂」例子為第二種。
+
+首先我們先來解釋第一種證明，在使用這個證明的時候需要先挑選一個「難題」，在這裡以 ECDLP（橢圓曲線離散對數問題） 為例。
+ECDLP 難題是這樣的，給攻擊者一個群 $\mathcal{G}$、一個中心點 $G$ 與兩個點 $aG$、 $bG$，攻擊者不可能找的到數字 $abG$。
+這時候再設計你的 scheme，比如公式(\ref{eq:SessionKey})，所有的符號列表放在表\ref{table:notation-chinese}。
+在這個 scheme 裡面，使用者 $i$ 與使用者 $j$ 將會使用 Diffie Hellman key exchange algorithm 來產生 session key，那這就滿足了上面所說的難題的條件。
+使用者 $i$ 傳出自身的公鑰 $\SID{i}\cdot{}\Pubkey{i}$ 給予使用者 $j$，使用者也回覆其自身的公鑰給予使用者 $i$。
+在這時使用難題 ECDLP 解釋公式 (\ref{eq:SessionKey}) ，可以簡單的將$a$設定為$\SID{i}\cdot{}\Prikey{i}$，並將$b$設定為$\SID{j}\cdot{}\Prikey{j}$。
+如有一竊聽者在中間攔截其訊息，它只能聽到 $aG = \SID{i}\cdot{}\Prikey{i}\cdot{}G$ 與 $bG = \SID{j}\cdot{}\Prikey{j}\cdot{}G$，那麼竊聽者如果可以解出 $\SessionKey{ij}$ 那麼竊聽者就可以解的開 ECDLP 問題 $abG$，那它就可以發一篇文章去 natural 並得到數學諾貝爾獎。
+
+\begin{minipage}{.48\textwidth}
+	\begin{align}
+		G       & \in \mathcal{G} \nonumber  \\
+		\SID{i} & \in \RandomSpace \nonumber \\
+		\SID{j} & \in \RandomSpace \nonumber
+	\end{align}
+\end{minipage}
+\begin{minipage}{.48\textwidth}
+	\begin{align}
+		\Prikey{i} & \in \RandomSpace \nonumber     \\
+		\Prikey{j} & \in \RandomSpace \nonumber     \\
+		\Pubkey{i} & = \Prikey{i}\cdot{}G \nonumber \\
+		\Pubkey{j} & = \Prikey{j}\cdot{}G \nonumber
+	\end{align}
+\end{minipage}
+
+\begin{align}
+	\SessionKey{ji} & = \Pubkey{i}\SID{i}\cdot{}\SID{j}\cdot{}\Prikey{j} \nonumber         \\
+	                & = \Prikey{i}\SID{i}\cdot{}\SID{j}\cdot{}\Prikey{j}\cdot{}G \nonumber \\
+	                & = \Pubkey{j}\cdot{}\SID{j}\cdot{}\Prikey{i}\SID{i} \nonumber         \\
+	                & = \SessionKey{ij}\label{eq:SessionKey}
+\end{align}
+
+第二種證明其實跟第一種差不了太多，只是證明的目的變成了「攻擊者無法分辨」。
+使用 Hash Function 來舉例，Hash Function $Hash(b) = \alpha \in \RandomSpace$ 給予使用者輸入任意實數，並輸出無法被反向推導的另一實數。
+並且這個 Hash Function （如SHA256）已經被許多人證明過結果是無法分辨的。
+如果給予攻擊者兩個隨機的輸入值與一個輸出值 $(b_1, b_2, \alpha \in Hash(b_1) \cup Hash(b_2))$，並且不給予 Hash Function 本身，理論上這個攻擊者能夠猜出 $\alpha$ 的輸入的機率為 50\%（與亂猜的機率差不多）。
+在你的論文中便可以使用 Hash Function 來設計你的 scheme，例如 (\ref{eq:hash-example})。
+這時候 Hash Function 就成為一個難題，如果任何攻擊者可以從$\SID{i}$而猜出$\PID{i}$，這就代表它破解了 Hash Function。
+
+\begin{align}
+	K_i     & = \in \RandomSpace \nonumber                  \\
+	\PID{i} & = Hash(\SID{i}) + K_i \label{eq:hash-example}
+\end{align}
+
+從上所述，目前大部分的證明方法都是「反向證明法」，也就是「如果你可以破解我的 Scheme，那你也可以破解這個難題，在難題不被破解的情況下我的 Scheme 是安全的」。
+所以在設計 Scheme 時必須先想好要使用哪種難題。
+
+\ChineseNotation{}
+
+\subsubsection{Performance Analysis and Evaluation}
+
+貼出你這個 Scheme 與其他人的比較。
+
+\subsubsection{Conclusion}
+
+寫的跟 Abstract 差不多就可以了，不過在這時候可以寫的更深入一點。
+比如說「我們的論文在A方法上面使用了b與c兩種優化方法並與B方法比較起來提昇了XX\%的速度」。
+
+\subsection{使用 Tikz 套件畫出圖形}
+
+這一章節是給予那些 Greek 想要榨乾 Latex 最後一點效能的人看的。
+這邊基本上只會列出一些單純的使用方法，如果你會了這些方法，那麼搜尋其他方法也對你不是什麼難事了。
+
+\subsubsection{Tikz 基礎使用}
+
+在使用 tikz 的時候有幾點要注意：
+\begin{enumerate}
+	\item 所有的 Tikz 方法必須放在 tikzpicture 裡面。
+	\item 所有的命令結束時必須加上分號（;）。
+	\item Tikz 的零點在左下角。
+\end{enumerate}
+
+tikz 的基礎指令：
+
+\definecolor{custom-color}{HTML}{9f393d}
+\begin{enumerate}
+	\item $\backslash$node \\
+	      可以想像成一個基本的單元，可以使用的方法如下，但不限於： \\
+	      \begin{tikzpicture}
+		      \node at (3, 1) {可以使用 at 設定位置};
+		      \node {如果不設定位置的話就是(0 ,0)}; % 基本的文字單元
+		      \node at (3, -1) {at 也可以設定成負的};
+		      \node [fill=red] at (1, 2) {你可以將 node 加上顏色};
+		      \node [draw=red] at (7, 2) {也可以將 node 加上邊框};
+		      \node [draw=red,circle] at (7, -1) {\shortstack{更可以改變\\邊框的形狀}};
+		      \node [draw=blue] (NamedNode) at (4, -3){\shortstack{可以將 node 設定別名\\並讓其他 node 依照它來排放}};
+		      \node at (NamedNode.north) {North};
+		      \node at (NamedNode.east) {East};
+		      \node at (NamedNode.south) {South};
+		      \node at (NamedNode.west) {West};
+		      \node[text=red] at (NamedNode.center) {Center};
+
+		      \node at ([xshift=-1cm, yshift=-1cm]NamedNode.south) {覺得太近的話可以使用 yshift 和 xshift 來做偏移};
+
+		      \node [fill=blue,text=white] (picture) at ([yshift=-3cm]NamedNode.center){當然也可以放入圖片 -> \includegraphics[width=2cm]{ncut_watermark.jpg}};
+		      \node [text=custom-color] at ([yshift=-1cm]picture.south){當然你可以用 xcolor 來定義你自己想要的顏色};
+		      \node [text=custom-color] at ([yshift=-3cm]picture.south){數學式別忘了加上\$: $\alpha$};
+	      \end{tikzpicture}
+
+	\item $\backslash$draw \\
+    可以用這個指令來劃線：\\
+    \begin{tikzpicture}
+	    \node (A1) {A1};
+      \node (B1) at ([xshift=2cm]A1){B1};
+      \draw (A1) -- (B1);
+
+	    \node (A2) at ([yshift=-1cm]A1) {A2};
+      \node (B2) at ([xshift=2cm]A2){B2};
+      \draw [->] (A2) -- (B2);
+
+	    \node (A3) at ([yshift=-1cm]A2) {A3};
+      \node (B3) at ([xshift=2cm]A3){B3};
+      \draw [<->] (A3) -- (B3);
+
+	    \node (A4) at ([yshift=-1cm]A3) {A4};
+      \node (B4) at ([xshift=5cm]A4){B4};
+      \draw [<->] (A4) -- node [anchor=south] {也可以寫字} (B4);
+
+	    \node (A5) at ([yshift=-1cm]A4) {A5};
+      \node (B5) at ([xshift=5cm, yshift=-3cm]A5){B5};
+      \draw [<->] (A5) -- node [anchor=south] {歪了怎麼辦} (B5);
+
+	    \node (A6) at ([yshift=-4cm]A5) {A6};
+      \node (B6) at ([xshift=6cm, yshift=-3cm]A6){B6};
+      \draw [<->] (A6) -| node [anchor=south] {我可以轉彎:)} (B6);
+
+	    \node (A7) at ([yshift=-4cm]A6) {A7};
+      \node (B7) at ([xshift=6cm, yshift=-3cm]A7){B7};
+      \draw [<->] (A7) |- node [anchor=north] {另一邊} (B7);
+
+	    \node (A8) at ([yshift=-4cm]A7) {A8};
+      \node (B8) at ([xshift=6cm, yshift=-3cm]A8){B8};
+      \draw (A8) |- node [anchor=north] {暗影} ([yshift=1.5cm]B8.center) -| node [anchor=south] {轉兩次} (B8); %% 記得中間要加.center
+    \end{tikzpicture}
+
+    到這邊基本教學大概就結束了，希望大家都能順利畢業。
+\end{enumerate}
