@@ -60,8 +60,6 @@
 % ---------------  Define theme and color scheme  -----------------
 \usetheme[sidebarleft]{Caltech}  % 3 options: minimal, sidebarleft, sidebarright
 
-\setbeamertemplate{footline}[frame number]
-
 \setbeamertemplate{subsection in toc}[square]
 
 % ------------  Information on the title page  --------------------
@@ -84,12 +82,19 @@
 %The next block of commands puts the table of contents at the 
 %beginning of each section and highlights the current section:
 
+
 \AtBeginSection[]
 {
-  \begin{frame}
-    \frametitle{Outline}
-    \tableofcontents[currentsection]
+  \setbeamertemplate{page number in head/foot} {}
+	\begin{frame}[noframenumbering]
+		\frametitle{Outline}
+    \tableofcontents[
+      currentsection,
+      sectionstyle=show/shaded,
+      subsectionstyle=show/show/hide
+    ]
   \end{frame}
+  \showpagenumber
 }
 %------------------------------------------------------------
 
